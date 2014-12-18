@@ -262,4 +262,4 @@ module_exit(dev_exit);
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("luoxiaofeng 527374998@qq.com");
-MODULE_DESCRIPTION("佳明微生物四项接口输出IO驱动");
+MODULE_DESCRIPTION("接口输出IO驱动");
