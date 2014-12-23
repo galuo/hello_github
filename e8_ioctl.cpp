@@ -13,9 +13,10 @@
 #include <fcntl.h>
 #include <sys/types.h>
 
+int e8_ioctl::fb=0;
 e8_ioctl::e8_ioctl()
 {
-	fd = open(device, O_RDWR);
+    fd = open(device_e8io, O_RDWR);
 	if (fd < 0)
 		printf("can't open device");
 }

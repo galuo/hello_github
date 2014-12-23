@@ -51,19 +51,19 @@ static unsigned long gpio_table [] =
 /* 用来指定GPIO引脚的功能：输出 */
 static unsigned int gpio_cfg_table [] =
 {
-	S3C_GPIO_SFN(0),
-	S3C_GPIO_SFN(0),
-	S3C_GPIO_SFN(0),
-	S3C_GPIO_SFN(0),
-	S3C_GPIO_SFN(0),
-	S3C_GPIO_SFN(0),
-	S3C_GPIO_SFN(0),
-	S3C_GPIO_SFN(0),
-	S3C_GPIO_SFN(0),
-	S3C_GPIO_SFN(0),
-	S3C_GPIO_SFN(0),
-	S3C_GPIO_SFN(0),
-	S3C_GPIO_SFN(0),
+	S3C_GPIO_SFN(1),
+	S3C_GPIO_SFN(1),
+	S3C_GPIO_SFN(1),
+	S3C_GPIO_SFN(1),
+	S3C_GPIO_SFN(1),
+	S3C_GPIO_SFN(1),
+	S3C_GPIO_SFN(1),
+	S3C_GPIO_SFN(1),
+	S3C_GPIO_SFN(1),
+	S3C_GPIO_SFN(1),
+	S3C_GPIO_SFN(1),
+	S3C_GPIO_SFN(1),
+	S3C_GPIO_SFN(1),
 };
 
 /**
@@ -73,7 +73,9 @@ static int tq210_gpio_open(struct inode *inode, struct file *file)
 {
 	int i;
 	int err;
-
+    for (i = 0; i < sizeof(gpio_table)/sizeof(unsigned long); i++){
+        gpio_free(gpio_table [i]);
+    }
 	err = gpio_request(gpio_table[0], "GPH0_6");
 	if(err)
 	{
@@ -151,7 +153,7 @@ static int tq210_gpio_open(struct inode *inode, struct file *file)
 	{
 		printk(KERN_ERR "failed to request GPH3_2 for EN4 pin\n");
         return err;
-	}
+    }
 	printk(KERN_INFO " external_output opened\n");
 	for (i = 0; i < sizeof(gpio_table)/sizeof(unsigned long); i++)
 	{

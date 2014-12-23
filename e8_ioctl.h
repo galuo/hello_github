@@ -1,6 +1,7 @@
-#ifndef E8_IOCTL_H
-#define E8_IOCTL_H
+#ifndef E8_IOCTL_H_
+#define E8_IOCTL_H_
 
+#define device_e8io  "/dev/external_output"
 class e8_ioctl
 {
 public:
@@ -24,3 +25,4 @@ public:
 	void ioctl_en3(bool b);
 	void ioctl_en4(bool b);
 }
+#endif
