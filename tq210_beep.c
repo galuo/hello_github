@@ -31,7 +31,7 @@
 #define DEVICE_NAME "beep"
 
 
-#define PRESCALER (66-1)
+#define PRESCALER (2-1)
 
 #define BEEP_ON  1
 #define BEEP_OFF 0
@@ -140,11 +140,15 @@ static void tq210_set_timer1(unsigned long Val)
 	//准备更新TCMPB1数值，先置1 TCON[9]
 	tcon |= S3C2410_TCON_T1MANUALUPD;
 	__raw_writel(tcon, S3C2410_TCON);	
-    //TCNTB1=200，改数值决定了PWM的频率
-    tcnt = 200;
+    //TCNTB1,改数值决定了PWM的频率 
+    unsigned long pclk;//
+	struct clk *clk_p;
+	clk_p = clk_get(NULL, "pclk");
+	pclk  = clk_get_rate(clk_p);//得到时钟频率
+    tcnt = pclk/2/5000;//上面设置预分频数值=1，分割值为1/1，输出频率5kHz
 	 __raw_writel(tcnt, S3C2410_TCNTB(1));
 	//改变TCMPB1的数值，改数值决定PWM的频宽
-    tcmp = 100;
+    tcmp = tcnt/2;
 	__raw_writel(tcmp, S3C2410_TCMPB(1));
 }
 
