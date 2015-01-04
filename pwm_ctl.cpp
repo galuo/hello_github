@@ -16,8 +16,8 @@
 int CPWM_Ctl::fb=0;
 CPWM_Ctl::CPWM_Ctl()
 {
-    fd = open(device_pwm, O_RDWR);
-    if (fd < 0)
+    fb = open(device_pwm, O_RDWR);
+    if (fb < 0)
         printf("can't open device");
 }
 CPWM_Ctl::~CPWM_Ctl()
@@ -27,10 +27,10 @@ CPWM_Ctl::~CPWM_Ctl()
 
 void CPWM_Ctl::open_pwm()
 {
-    ioctl(beep_fb, 1, 1);
+    ioctl(fb, 1, 1);
 }
 
 void CPWM_Ctl::close_pwm()
 {
-    ioctl(beep_fb, 0, 1);
+    ioctl(fb, 0, 1);
 }

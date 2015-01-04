@@ -6,18 +6,25 @@
  *	该类实现的是将调用驱动的功能封装起来；
  *
  *************************************************************************************/
+
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include<string.h>
+#include <sys/ioctl.h>
+#include<sys/stat.h>
+#include<stdio.h>
+#include<stdlib.h>
+#include<unistd.h>
+#include<fcntl.h>
+#include <sys/types.h>
 #include "e8_ioctl.h"
 
-#include <sys/ioctl.h>
-#include <stdio.h>
-#include <fcntl.h>
-#include <sys/types.h>
-
-int e8_ioctl::fb=0;
+int e8_ioctl::fd=0;
 e8_ioctl::e8_ioctl()
 {
     fd = open(device_e8io, O_RDWR);
-	if (fd < 0)
+    if (fd < 0)
 		printf("can't open device");
 }
 
@@ -26,7 +33,7 @@ e8_ioctl::~e8_ioctl()
 
 }
 
-void e8_ioctl::ioctl_a1(b)
+void e8_ioctl::ioctl_a1(bool b)
 {
 	int err;
 	err=ioctl(fd,b,1);
@@ -34,7 +41,7 @@ void e8_ioctl::ioctl_a1(b)
 		printf("ioctl failed");
 }
 
-void e8_ioctl::ioctl_b1(b)
+void e8_ioctl::ioctl_b1(bool b)
 {
 	int err;
 	err=ioctl(fd,b,2);
@@ -42,7 +49,7 @@ void e8_ioctl::ioctl_b1(b)
 		printf("ioctl failed");
 }
 
-void e8_ioctl::ioctl_c1(b)
+void e8_ioctl::ioctl_c1(bool b)
 {
 	int err;
 	err=ioctl(fd,b,3);
@@ -50,7 +57,7 @@ void e8_ioctl::ioctl_c1(b)
 		printf("ioctl failed");
 }
 
-void e8_ioctl::ioctl_a2(b)
+void e8_ioctl::ioctl_a2(bool b)
 {
 	int err;
 	err=ioctl(fd,b,4);
@@ -58,7 +65,7 @@ void e8_ioctl::ioctl_a2(b)
 		printf("ioctl failed");
 }
 
-void e8_ioctl::ioctl_b2(b)
+void e8_ioctl::ioctl_b2(bool b)
 {
 	int err;
 	err=ioctl(fd,b,5);
@@ -66,7 +73,7 @@ void e8_ioctl::ioctl_b2(b)
 		printf("ioctl failed");
 }
 
-void e8_ioctl::ioctl_en_pmt(b)
+void e8_ioctl::ioctl_en_pmt(bool b)
 {
 	int err;
 	err=ioctl(fd,b,6);
@@ -74,7 +81,7 @@ void e8_ioctl::ioctl_en_pmt(b)
 		printf("ioctl failed");
 }
 
-void e8_ioctl::ioctl_a0(b)
+void e8_ioctl::ioctl_a0(bool b)
 {
 	int err;
 	err=ioctl(fd,b,7);
@@ -82,7 +89,7 @@ void e8_ioctl::ioctl_a0(b)
 		printf("ioctl failed");
 }
 
-void e8_ioctl::ioctl_b0(b)
+void e8_ioctl::ioctl_b0(bool b)
 {
 	int err;
 	err=ioctl(fd,b,8);
@@ -90,7 +97,7 @@ void e8_ioctl::ioctl_b0(b)
 		printf("ioctl failed");
 }
 
-void e8_ioctl::ioctl_c0(b)
+void e8_ioctl::ioctl_c0(bool b)
 {
 	int err;
 	err=ioctl(fd,b,9);
@@ -98,7 +105,7 @@ void e8_ioctl::ioctl_c0(b)
 		printf("ioctl failed");
 }
 
-void e8_ioctl::ioctl_en1(b)
+void e8_ioctl::ioctl_en1(bool b)
 {
 	int err;
 	err=ioctl(fd,b,10);
@@ -106,7 +113,7 @@ void e8_ioctl::ioctl_en1(b)
 		printf("ioctl failed");
 }
 
-void e8_ioctl::ioctl_en2(b)
+void e8_ioctl::ioctl_en2(bool b)
 {
 	int err;
 	err=ioctl(fd,b,11);
@@ -114,7 +121,7 @@ void e8_ioctl::ioctl_en2(b)
 		printf("ioctl failed");
 }
 
-void e8_ioctl::ioctl_en3(b)
+void e8_ioctl::ioctl_en3(bool b)
 {
 	int err;
 	err=ioctl(fd,b,12);
@@ -122,7 +129,7 @@ void e8_ioctl::ioctl_en3(b)
 		printf("ioctl failed");
 }
 
-void e8_ioctl::ioctl_en4(b)
+void e8_ioctl::ioctl_en4(bool b)
 {
 	int err;
 	err=ioctl(fd,b,13);

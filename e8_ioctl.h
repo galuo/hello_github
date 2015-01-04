@@ -5,7 +5,7 @@
 class e8_ioctl
 {
 public:
-	static int fb;
+    static int fd;
 	
 public:
 	e8_ioctl();
@@ -24,5 +24,5 @@ public:
 	void ioctl_en2(bool b);
 	void ioctl_en3(bool b);
 	void ioctl_en4(bool b);
-}
+};
 #endif
